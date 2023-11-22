@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="status">
+    <p>{{ statusText }}</p>
+    <app-button *ngIf="current.state === Game.State.FINISHED" (click)="onRestart()" [loading]="isRestarting">
+      Play again
+    </app-button>
+  </div>
+  <div class="control">
+    <div class="left">
+      <!-- Ready control -->
+      <ng-container *ngIf="current.state === Game.State.CREATED">
+        <app-button *ngIf="!player.ready; else ready" (click)="onReady()">
+          I'm ready
+        </app-button>
+        <ng-template #ready>
+          <p>You are ready</p>
+        </ng-template>
+      </ng-container>
+      <!-- Hand control -->
+      <ng-container *ngIf="current.state === Game.State.STARTED || current.state === Game.State.FINISHED">
+        <p *ngIf="player.selection; else select">
+          You picked {{ Game.Hand.render(player.selection) }}
+        </p>
+        <ng-template #select>
+          <app-hand-picker (handSelected)="onHand($event)" />
+        </ng-template>
+      </ng-container>
+    </div>
+    <div class="separator"></div>
+    <div class="right">
+      <!-- Ready control -->
+      <ng-container *ngIf="current.state === Game.State.CREATED">
+        <p *ngIf="!opponent.ready; else ready">
+          Waiting for {{ opponent.name }} to get ready
+        </p>
+        <ng-template #ready>
+          <p>{{ opponent.name }} is ready</p>
+        </ng-template>
+      </ng-container>
+      <!-- Hand control -->
+      <ng-container *ngIf="current.state === Game.State.STARTED || current.state === Game.State.FINISHED">
+        <p *ngIf="opponent.selection; else selecting">
+          <ng-container *ngIf="player.selection; else fallback">
+            {{ opponent.name }} picked {{ Game.Hand.render(opponent.selection) }}
+          </ng-container>
+          <ng-template #fallback>
+            {{ opponent.name }} picked a hand
+          </ng-template>
+        </p>
+        <ng-template #selecting>
+          <p>Waiting for {{ opponent.name }} to pick a hand</p>
+        </ng-template>
+      </ng-container>
+    </div>
+  </div>
+  <div class="outcome">
+    <p>{{ outcomeText }}</p>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="logo">
+    <app-logo [withoutText]="true" />
+  </div>
+  <h2>Login</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div *ngIf="loginForm.getError('invalidCredentials') as error" class="alert alert-danger">
+      <p>Invalid login credentials.</p>
+    </div>
+    <div *ngIf="loginForm.getError('unknownError') as error" class="alert alert-danger">
+      <p>An unknown error occurred.</p>
+      <p>{{ error }}</p>
+    </div>
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" formControlName="username"
+             [class.invalid]="shouldShowControlError('username')">
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" formControlName="password"
+             [class.invalid]="shouldShowControlError('password')">
+    </div>
+    <app-button type="submit" [fullWidth]="true" [loading]="isSubmitting">Login</app-button>
+    <p class="text-center mt1">
+      Don't have an account yet? <a routerLink="/register">Register</a>
+    </p>
+  </form>
+</div>

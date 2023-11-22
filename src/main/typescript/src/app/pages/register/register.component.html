@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="logo">
+    <app-logo [withoutText]="true" />
+  </div>
+  <h2>Register</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div *ngIf="registerForm.getError('usernameTaken') as error" class="alert alert-danger">
+      <p>The username is already taken.</p>
+    </div>
+    <div *ngIf="registerForm.getError('unknownError') as error" class="alert alert-danger">
+      <p>An unknown error occurred.</p>
+      <p>{{ error }}</p>
+    </div>
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" formControlName="username"
+             [class.invalid]="shouldShowControlError('username')">
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" formControlName="password"
+             [class.invalid]="shouldShowControlError('password')">
+    </div>
+    <div>
+      <label for="confirmPassword">Confirm password:</label>
+      <input type="password" id="confirmPassword" formControlName="confirmPassword"
+             [class.invalid]="shouldShowControlError('confirmPassword')">
+    </div>
+    <app-button type="submit" [fullWidth]="true" [loading]="isSubmitting">Register</app-button>
+    <p class="text-center mt1">
+      Already have an account? <a routerLink="/login">Login</a>
+    </p>
+  </form>
+</div>

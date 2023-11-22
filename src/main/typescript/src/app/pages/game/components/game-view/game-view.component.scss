@@ -1,0 +1,11 @@
+.container {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 32px;
+  height: calc(100vh - var(--header-height) - 32px * 2);
+  padding: 32px;
+}
+
+p {
+  font-weight: bold;
+}

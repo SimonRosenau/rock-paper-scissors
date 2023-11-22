@@ -1,0 +1,18 @@
+<div class="header">
+  <a routerLink="/">
+    <app-logo />
+  </a>
+  <div class="auth">
+    <ng-container *ngIf="this.authState$ | async as state">
+      <ng-container *ngIf="state.type === 'authenticated'">
+        <b>{{ state.user.username }} 👋🏼</b>
+        <app-button (click)="this.logout()" [loading]="isLoggingOut">Logout</app-button>
+      </ng-container>
+      <ng-container *ngIf="state.type === 'unauthenticated'">
+        <app-button routerLink="/login">Login</app-button>
+        <app-button routerLink="/register">Register</app-button>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
+

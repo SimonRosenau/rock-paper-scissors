@@ -1,0 +1,8 @@
+<div *ngIf="game.players.length === 2; else waiting" class="container">
+  <app-playground [game]="game"></app-playground>
+  <app-scoreboard [game]="game"></app-scoreboard>
+</div>
+<ng-template #waiting>
+  <p>Waiting for opponent to join...</p>
+  <app-loading />
+</ng-template>

@@ -1,0 +1,11 @@
+<div class="container">
+  <div *ngIf="player as player">
+    <app-player [player]="player"></app-player>
+    <app-score *ngIf="player.score > 0" [score]="player.score"></app-score>
+  </div>
+  <span>vs.</span>
+  <div *ngIf="opponent as opponent">
+    <app-player [player]="opponent"></app-player>
+    <app-score *ngIf="opponent.score > 0" [score]="opponent.score"></app-score>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--header-height);
+}
+
+a {
+  text-decoration: none;
+}
+
+.auth {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}

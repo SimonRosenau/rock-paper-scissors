@@ -1,0 +1,2 @@
+<app-game-view *ngIf="game$ | async as game" [game]="game" />
+<p *ngIf="error as error">{{ error }}</p>

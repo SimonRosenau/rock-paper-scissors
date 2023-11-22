@@ -1,0 +1,108 @@
+{
+  "env": {
+    "es6": true
+  },
+  "ignorePatterns": [
+    "build/",
+    "dist/",
+    "export/",
+    "node_modules/"
+  ],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "sourceType": "module"
+      },
+      "plugins": [
+        "@typescript-eslint",
+        "@angular-eslint",
+        "import",
+        "simple-import-sort"
+      ],
+      "extends": [
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:prettier/recommended",
+        "prettier"
+      ],
+      "rules": {
+        "@typescript-eslint/comma-spacing": "warn",
+        "@typescript-eslint/func-call-spacing": "warn",
+        "@typescript-eslint/keyword-spacing": "warn",
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/no-empty-interface": "off",
+        "@typescript-eslint/no-extra-semi": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-namespace": "off",
+        "@typescript-eslint/no-shadow": "off",
+        "@typescript-eslint/no-unused-expressions": "warn",
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          {
+            "ignoreRestSiblings": true,
+            "argsIgnorePattern": "^_"
+          }
+        ],
+        "@typescript-eslint/quotes": "off",
+        "@typescript-eslint/semi": "off",
+        "arrow-spacing": "warn",
+        "block-spacing": "warn",
+        "computed-property-spacing": "warn",
+        "generator-star-spacing": "warn",
+        "import/order": "off",
+        "key-spacing": "warn",
+        "max-len": "off",
+        "no-alert": "warn",
+        "no-console": "warn",
+        "no-empty": "warn",
+        "no-mixed-requires": "error",
+        "no-multiple-empty-lines": [
+          "warn",
+          {
+            "max": 1
+          }
+        ],
+        "no-new-require": "error",
+        "no-restricted-imports": [
+          "error",
+          {
+            "paths": [
+              {
+                "name": "@beachbag/api/dist",
+                "message": "Please import from @beachbag/api instead."
+              }
+            ]
+          }
+        ],
+        "object-curly-spacing": [
+          "warn",
+          "always"
+        ],
+        "prettier/prettier": "warn",
+        "rest-spread-spacing": "warn",
+        "semi-spacing": "warn",
+        "simple-import-sort/imports": "warn",
+        "switch-colon-spacing": "warn",
+        "template-curly-spacing": [
+          "warn",
+          "never"
+        ],
+        "template-tag-spacing": "warn",
+        "yield-star-spacing": "warn"
+      }
+    },
+    {
+      "files": ["*.html"],
+      "plugins": ["@angular-eslint/template"],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended",
+        "plugin:@angular-eslint/template/accessibility"
+      ],
+      "rules": {}
+    }
+  ]
+}

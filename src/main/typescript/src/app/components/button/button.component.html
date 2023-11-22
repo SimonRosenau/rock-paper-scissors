@@ -1,0 +1,8 @@
+<button [type]="type" [class.full-width]="fullWidth">
+  <div class="content" [class.hidden]="loading">
+    <ng-content />
+  </div>
+  <div *ngIf="loading" class="loading">
+    <app-loading />
+  </div>
+</button>

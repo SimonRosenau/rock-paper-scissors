@@ -1,0 +1,5 @@
+<div>
+  <button *ngFor="let option of Game.Hand.values" (click)="handSelected.emit(option)">
+    {{Game.Hand.render(option)}}
+  </button>
+</div>
