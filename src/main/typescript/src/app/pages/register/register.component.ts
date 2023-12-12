@@ -9,7 +9,7 @@ import { LogoComponent } from '../../components/logo/logo.component'
 import { AuthService } from '../../services/auth.service'
 import { extractErrorMessage } from '../../util/extract-error-message'
 
-const passwordPattern = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$')
+const passwordPattern = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)\\S{8,}$')
 
 interface FormValues {
   username: string
